@@ -1,0 +1,21 @@
+{
+  "name": "publisher",
+  "version": "1.0.0",
+  "description": "http publisher server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Henry Ugochukwu",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^6.1.0",
+    "helmet": "^3.20.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "redis": "^3.1.0",
+    "uuid": "^8.3.2"
+  }
+}
