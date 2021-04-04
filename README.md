@@ -24,12 +24,6 @@ Node.js was considered because it feels right at home when incorporating IO and 
 
 Redis has a PubSub implementation which is a popular inMemory database to cater for a publish/subscribe model. Redis as a service scales and it's reliable and configurable, plus it's easy to get started with.
 
-## Getting Started
-
-To implement locally, you need to have redis installed on your machine.
-
-After that go into the project directory and find _.env file._ Replace the PUBLISHER_PORT, SUBSCIBER_PORT, and other environment variables inside the file to enable the app to run well.
-
 ## Clone this repository
 
 ```
@@ -42,19 +36,31 @@ Then install the dependencies
 npm install
 ```
 
+## Getting Started
+
+To implement locally, you need to have redis installed on your machine.
+
+On MacOS, start the redis server locally via the command
+
+```
+brew services start redis
+```
+
+After that go into the project directory and find _.env file._ Replace the PUBLISHER_PORT, SUBSCIBER_PORT, and other environment variables inside the file to enable the app to run well.
+
 ## Start the server
 
-Run in the start-server script
+Navigate into project root directry and run the start-server script
 
 ```
-node start-server.js
+./start-server.sh
 ```
 
-This file starts up the redis server, publisher server, subscriber server in parallel. Al
+This file starts up subscriber & publisher server in parallel. Allows us to monitor events in the terminal.
 
 ## Consideration for Testing
 
-The start-server.js is configured to run the redis server on a linux machine (macOS) only, as a result redis-server may need to be started manually on a windows and other OS.
+The start-server.sh should be run when the redis-server has already been started. And direction is only give to how to start a redis-server on macOS, please look up the appropriate direction for starting up a redis server on other OS.
 
 Alternatively, you can cd into the individual director ./subscriber and ./publisher and run
 
@@ -64,7 +70,7 @@ npm start
 
 to boot up the server for the subscriber and publisher separately.
 
-Also, the postman test samples is available publicly within the [test.http](test.http) file
+Also, the postman test samples is available within the [test.http](test.http) file.
 
 ## Things I didn’t do
 
