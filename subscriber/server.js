@@ -5,7 +5,7 @@ import helmet from 'helmet';
 
 const app = express();
 
-const API_PORT = 9000;
+const API_PORT = process.env.SUBSCIBER_PORT || 9000;
 
 const sub = redis.createClient();
 

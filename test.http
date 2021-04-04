@@ -1,0 +1,18 @@
+###
+# Create a subscription
+POST http://localhost:9000/subscribe/test1 HTTP/1.1
+content-type: application/json
+
+{
+    "url": "http://localhost:9000/test1"
+}
+
+###
+# Publish message to topic
+POST http://localhost:8000/publish/test1 HTTP/1.1
+content-type: application/json
+
+{
+    "message": "Nike NFT sold for $100M"
+}
+

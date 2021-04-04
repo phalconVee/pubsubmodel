@@ -6,7 +6,7 @@ import helmet from 'helmet';
 
 const app = express();
 
-const API_PORT = 8000;
+const API_PORT = process.env.PUBLISHER_PORT || 8000;
 
 let pub = redis.createClient();
 
@@ -27,8 +27,11 @@ app.post('/publish/:topic', (req, res) => {
     pub.publish(
       topic,
       JSON.stringify({
-        topicId,
-        message,
+        id: topicId,
+        topic,
+        data: {
+          msg: message,
+        },
       }),
     );
 
@@ -36,7 +39,8 @@ app.post('/publish/:topic', (req, res) => {
       status: true,
       data: {
         status: 'published',
-        msg: `${topic} event published`,
+        topic: topic,
+        msg: message,
       },
     });
   } catch (err) {
